@@ -109,6 +109,7 @@ nav.nav-fixed .nav-cta:hover{background:var(--red-deep) !important}
 @media(max-width:900px){.b-live-desktop{display:none}.b-live-inline{display:flex;white-space:normal;flex:1 1 220px;min-width:0}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .b-photo1{grid-column:5/7;grid-row:2/6;box-shadow:var(--shadow)}
+@media(min-width:901px){.b-photo1{margin-top:-14px}}
 .b-photo1 img{width:100%;height:100%;object-fit:cover;display:block}
 .b-photo2{grid-column:1/3;grid-row:6/9}
 .b-photo3{grid-column:3/5;grid-row:6/9;transform:rotate(2.5deg) scale(.94);box-shadow:var(--shadow);z-index:2}
@@ -165,6 +166,13 @@ nav.nav-fixed .nav-cta:hover{background:var(--red-deep) !important}
 .point b{display:block;font-size:.98rem}
 .point p{font-size:.9rem;color:var(--ink-soft)}
 @media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+.dev-grid{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.dev-card{background:var(--cream2);border-radius:20px;padding:32px 30px}
+.dev-card h3{font-size:1.15rem;margin-bottom:10px}
+.dev-card p{font-size:.92rem;color:var(--ink-soft);margin-bottom:18px}
+.dev-tags{display:flex;flex-wrap:wrap;gap:10px}
+.dev-tags span{font-size:.8rem;font-weight:600;background:#fff;border:1px solid var(--line);color:var(--ink);padding:7px 14px;border-radius:999px}
+@media(max-width:700px){.dev-grid{grid-template-columns:1fr}}
 
 /* STORY — narrative timeline */
 .story{background:linear-gradient(180deg,#fff, var(--cream));border-top:1px solid var(--line)}
@@ -224,9 +232,13 @@ nav.nav-fixed .nav-cta:hover{background:var(--red-deep) !important}
 .m-bordered p{color:var(--ink-soft)}
 .m-photo{grid-column:5/7;grid-row:3/5;padding:0}
 .m-photo img{width:100%;height:100%;object-fit:cover}
+.m-state{grid-column:1/4;grid-row:5/7;background:var(--cream2);color:var(--ink)}
+.m-state p{color:var(--ink-soft)}
+.m-national{grid-column:4/7;grid-row:5/7;background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+.m-national p{color:var(--ink-soft)}
 @media(max-width:900px){
   .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
-  .m-red,.m-ink,.m-cream,.m-bordered,.m-photo{grid-column:1/3;grid-row:auto;min-height:150px}
+  .m-red,.m-ink,.m-cream,.m-bordered,.m-photo,.m-state,.m-national{grid-column:1/3;grid-row:auto;min-height:150px}
   .m-photo{aspect-ratio:16/10}
 }
 
@@ -476,7 +488,7 @@ footer img{height:22px;opacity:.9}
       <h2 class="h2">A 3-month journey from curiosity to a working robot</h2>
       <p class="lead">Walk2Lead Robotics Tech Quest is a three-month, activity-based programme for Classes 6 &amp; 7 in government schools, reaching children in rural and coastal communities who rarely get access to STEM education of this quality.</p>
       <div class="about-points">
-        <div class="point"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></div><div><b>~26 hands-on sessions per school</b><p>Electronics, Arduino, sensors, coding fundamentals and AI-assisted building, with every student prototyping on real kits, not slides.</p></div></div>
+        <div class="point"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></div><div><b>30 sessions per school — 26 hands-on, 4 presentation</b><p>Electronics, Arduino, sensors, coding fundamentals and AI-assisted building across 26 hands-on sessions, plus 4 dedicated presentation sessions, with every student prototyping on real kits, not slides.</p></div></div>
         <div class="point"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></div><div><b>Two-stage merit selection</b><p>An orientation ideathon, then a school-conducted written aptitude test, selects ~30 students per school from cohorts of 300–400 applicants.</p></div></div>
         <div class="point"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px" aria-hidden="true"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div><div><b>School expos → District Innovators Expo</b><p>Every phase ends with students pitching working prototypes to an external jury of technologists and educators.</p></div></div>
         <div class="point"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div><div><b>Real-time transparency portal</b><p>De' Lead tracks session progress, attendance and school-wise detail live on the Walk2Lead portal, giving Walkaroo Foundation full visibility and board-ready reporting.</p></div></div>
@@ -484,6 +496,19 @@ footer img{height:22px;opacity:.9}
     </div>
     <div class="about-media reveal">
       <img loading="lazy" decoding="async" src="assets/kids-building.jpg" alt="Students building their robotics project together">
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="dev-grid reveal">
+      <div class="dev-card">
+        <h3>Development in STEM Learning</h3>
+        <p>Electronics, Arduino, sensors, coding fundamentals and AI-assisted building, taken from first principles to a working prototype every student can demo.</p>
+      </div>
+      <div class="dev-card">
+        <h3>Soft Skill Enrichment</h3>
+        <p>Built into the curriculum, not bolted on: every cohort practices these on stage, at the school and district expos.</p>
+        <div class="dev-tags"><span>Presentation</span><span>Leadership</span><span>Team Building</span><span>Problem Solving</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -509,7 +534,7 @@ footer img{height:22px;opacity:.9}
         <div class="tag">2023 · Phase 1</div>
         <div class="yr">Kinalur GUPS, Kozhikode</div>
         <h3>The pilot nobody had to renew</h3>
-        <p>One school, 48 students, no track record to point to. De' Lead ran the full 26-session curriculum anyway, taking students from electronics to a working prototype, presented by 12-year-olds. It was enough to take the programme into a second district next.</p>
+        <p>One school, 48 students, no track record to point to. De' Lead ran the full 30-session curriculum anyway, taking students from electronics to a working prototype, presented by 12-year-olds. It was enough to take the programme into a second district next.</p>
       </div>
       <div class="beat reveal">
         <div class="tag">Phase 2 · Scale-up</div>
@@ -555,11 +580,13 @@ footer img{height:22px;opacity:.9}
     <h2 class="h2 reveal">What four phases add up to</h2>
     <p class="lead reveal">Not vanity metrics: every number here is verified against school-wise attendance records and session reports.</p>
     <div class="mosaic reveal">
-      <div class="mtile m-red"><b data-count="44">0</b><div class="lbl">Schools Implemented</div><p>Government UP &amp; high schools across four districts, each running the full 26-session curriculum.</p></div>
+      <div class="mtile m-red"><b data-count="44">0</b><div class="lbl">Schools Implemented</div><p>Government UP &amp; high schools across four districts, each running the full 30-session curriculum.</p></div>
       <div class="mtile m-ink"><b data-count="1300" data-suffix="+">0</b><div class="lbl">Students = Families Reached</div><p>Grades 6 &amp; 7, selected from cohorts of 300–400 applicants per school, in rural &amp; coastal Kerala.</p></div>
       <div class="mtile m-cream"><b data-count="4">0</b><div class="lbl">Districts Reached</div><p>Kozhikode, Malappuram, Kannur &amp; Wayanad, across four phases.</p></div>
-      <div class="mtile m-bordered"><b data-count="12">0</b><div class="lbl">→ International bootcamp</div><p>Selected for Zero2Entrepreneur 2025, Nov–Dec, in Kozhikode &amp; Malappuram.</p></div>
+      <div class="mtile m-bordered"><b data-count="12">0</b><div class="lbl">→ Students at International Bootcamp</div><p>Selected for the Zero2Entrepreneur 2025 international bootcamp, Nov–Dec, in Kozhikode &amp; Malappuram.</p></div>
       <div class="m-photo reveal"><img loading="lazy" decoding="async" src="assets/big-group.jpg" alt="Walk2Lead cohort group photo"></div>
+      <div class="mtile m-state"><b data-count="20" data-suffix="+">0</b><div class="lbl">Students with State-Level Recognition</div><p>Won recognition at the innovation competition hosted by Kerala Government's General Education Department.</p></div>
+      <div class="mtile m-national"><b data-count="14">0</b><div class="lbl">→ Students at National-Level Competition</div><p>Selected for the TechTop 2025 Innovation Bootcamp, a national platform (Manorama Online, Dec 2025).</p></div>
     </div>
     <p style="text-align:center;color:var(--ink-soft);font-size:.9rem;margin-top:22px"><b style="color:var(--red)">10+ sub-education districts</b> reached across the four.</p>
   </div>
@@ -654,6 +681,13 @@ footer img{height:22px;opacity:.9}
         <div class="who"><div><b>Mr. V. Noushad</b><span>Managing Director, Walkaroo Foundation</span></div></div>
       </div>
     </div>
+    <div class="feature-quote reveal">
+      <div class="feature-photo"><img loading="lazy" decoding="async" src="assets/people/sumitra.png" alt="Dr. Sumitra Binu"></div>
+      <div class="feature-body"><span class="mark">"</span>
+        <p>Walk2Lead Robotics TechQuest is an exciting and inspiring learning initiative created to introduce students of government schools — especially those in rural and coastal areas — to the world of robotics and technology. This project aims to bridge the learning gap by bringing high-quality STEM education to children who often have limited access to such opportunities. The programme offers a 52-hour, hands-on learning journey for students of Classes 6 and 7, filled with fun activities, simple coding tasks, and guided robotics projects. By nurturing curiosity and problem-solving skills at a young age, this project hopes to empower young learners to imagine boldly, explore freely, and grow with confidence in a rapidly changing world.</p>
+        <div class="who"><div><b>Dr. Sumitra Binu</b><span>Walkaroo Foundation</span></div></div>
+      </div>
+    </div>
     <div class="quote-slider reveal">
       <div class="quote-track" id="quote-track">
         <div class="quote"><span class="mark">"</span>
@@ -738,7 +772,7 @@ footer img{height:22px;opacity:.9}
           <li><div class="who-info"><b>Thottathil Raveendran</b><span>MLA, Kozhikode</span></div></li>
           <li><div class="who-info"><b>Linto Joseph</b><span>MLA, Thiruvambadi</span></div></li>
           <li><div class="who-info"><b>T. P. Ramakrishna</b><span>MLA, Perambra</span></div></li>
-          <li><div class="who-info"><b>District Sub Collector</b><span>Malappuram</span></div></li>
+          <li><div class="who-info"><b>Dilip K. Kainikkara</b><span>District Sub Collector, Malappuram</span></div></li>
         </ul>
         <p style="margin-top:14px;font-size:.84rem;color:var(--ink-soft)">Plus municipal chairs, deputy mayors and ward councillors who inaugurated individual schools across all four phases. This is a selection, not the full list.</p>
       </div>
