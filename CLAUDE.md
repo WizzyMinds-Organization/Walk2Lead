@@ -1,7 +1,9 @@
 # Walk2Lead Landing Page — Project Context
 
 ## What this is
-A single-page marketing/landing website for **Walk2Lead Robotics Tech Quest**, a CSR project funded by **Walkaroo Foundation** and executed end-to-end by **De' Lead International** (the implementation team and owner of this site). Academic partners: DIET Malappuram, DIET Kozhikode, DIET Kannur.
+A single-page marketing/landing website for **Walk2Lead Robotics Tech Quest** — **De' Lead International's own flagship CSR initiative**, funded by **Walkaroo Foundation**. De' Lead is the creator and owner of the programme (designs the curriculum, trains the trainers, runs every phase); Walkaroo is the CSR funding partner; academic partners DIET Malappuram, DIET Kozhikode and DIET Kannur provide official endorsement and school selection.
+
+**⚠️ Framing rule — get this right everywhere:** De' Lead International is the subject, not a vendor. Never write "funded by Walkaroo and executed/delivered by De' Lead" (that inverts ownership and reads as De' Lead being hired). Correct pattern: "De' Lead International's [own initiative], funded by Walkaroo Foundation." This page will eventually live under De' Lead International's own website, so it should read like a page De' Lead owns, not a case study of a project they were contracted for. This was flagged directly by the client after an earlier framing pass got it backwards — treat it as a hard constraint, not a style preference.
 
 **Business goal:** convert corporate/CSR decision-makers (CSR heads, HR heads, founders' offices — companies with a 2% CSR obligation under Companies Act §135) into leads for De' Lead International. The page sells *proof and de-risked execution*, not robotics. Primary CTA: "Partner with us for your CSR project" → contact form / WhatsApp / email.
 
@@ -30,13 +32,11 @@ A single-page marketing/landing website for **Walk2Lead Robotics Tech Quest**, a
 - Jury: Rony K. Roy (Kerala Startup Mission), Ram Kamal Manoj (TechTop), Nisha Subramaniam (SSVM International), Harikrishnan M
 - Video section embeds the YouTube uploads playlist `UUypZI3srbEiurNzDOdC3olw` (channel @Deleadinternational)
 
-## ⚠️ Unresolved placeholders — fix before production
-1. **WhatsApp + phone**: `+91 99999 99999` everywhere (wa.me link in CTA, tel: link) — placeholder
-2. **Email**: `info@deleadinternational.com` (in CTA + form mailto handler) — unconfirmed guess
-3. **Sub-Education Districts metric**: shows "12+" — INVENTED placeholder, owner must supply real count
-4. **Quote attribution**: featured quote credited to Mr. V. Noushad (MD, Walkaroo Foundation); PDF page 8 layout was ambiguous between him and Dr. Sumitra Binu (CSR Head, Walkaroo) — confirm with owner
-5. Contact form currently opens a prefilled mailto; swap to a Formspree/backend endpoint when available
-6. Owner may supply specific YouTube video links to replace the playlist embed; testimonial videos (Sumithra, Noushad, Arjun, Sabari, DIET heads) planned but not yet available — text quotes used meanwhile
+## ⚠️ Still open
+1. Contact form currently opens a prefilled mailto; swap to a Formspree/backend endpoint when available
+2. Owner may supply specific YouTube video links to replace the playlist embed; testimonial videos (Sumithra, Noushad, Arjun, Sabari, DIET heads) planned but not yet available — text quotes used meanwhile
+
+Resolved: WhatsApp/phone is `+91 80755 66081`; email is `info@deleadint.com`; sub-education districts metric is "10+"; featured quote confirmed attributed to Mr. V. Noushad, MD Walkaroo Foundation.
 
 ## Conventions
 - Keep it single-file; inline CSS/JS in index.html
