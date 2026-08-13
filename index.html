@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walk2Lead Robotics Tech Quest: CSR Project by De' Lead International</title>
+<meta name="description" content="44 government schools. 1,300+ children. Robotics, coding and AI delivered end-to-end by De' Lead International, funded by Walkaroo Foundation. See the numbers, the setbacks, and how we solved them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#221e21; --ink-soft:#4c454a; --red:#c81c1c; --red-deep:#9e1414; --red-bright:#FF0000; --red-wash:#6f2622;
+  --magenta:#750649; --magenta-deep:#560335; --cream:#faf7f4; --cream2:#f3ece6; --line:#e6dcd3;
+  --shadow:0 20px 60px -20px rgba(200,28,28,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Lora',serif;font-weight:600;line-height:1.12;letter-spacing:-.01em}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+section{padding:96px 0;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:18px}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--red-bright)}
+.h2{font-size:clamp(1.9rem,3.4vw,2.9rem);margin-bottom:18px}
+.lead{font-size:1.08rem;color:var(--ink-soft);max-width:640px}
+mark{background:none;color:var(--red);font-style:italic}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;font-weight:600;font-size:.98rem;text-decoration:none;transition:.25s;border:none;cursor:pointer}
+.btn-primary{background:var(--red);color:#fff}
+.btn-primary:hover{background:var(--red-deep);transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn-ghost{border:1.5px solid var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--red);color:var(--red)}
+.btn-wa{background:#25d366;color:#fff}
+.btn-wa:hover{filter:brightness(.95);transform:translateY(-2px)}
+.ico-svg{width:1em;height:1em;flex:0 0 auto}
+
+/* NAV — starts in-flow with the hero (red, white logo), becomes a fixed light bar past it */
+nav{position:absolute;top:0;left:0;right:0;z-index:100;background:var(--red);border-bottom:1px solid transparent;transition:transform .35s ease,background-color .35s ease,border-color .3s}
+nav.nav-fixed{position:fixed;background:rgba(250,247,244,.9);backdrop-filter:blur(14px)}
+nav.nav-fixed.scrolled{border-bottom-color:var(--line)}
+nav.nav-hidden{transform:translateY(-100%)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{position:relative;display:block}
+.nav-logo img{height:26px}
+.nav-logo .logo-color{display:none}
+.nav-logo .logo-white{display:block;filter:brightness(0) invert(1)}
+nav.nav-fixed .nav-logo .logo-color{display:block}
+nav.nav-fixed .nav-logo .logo-white{display:none}
+.nav-links{display:flex;gap:30px;align-items:center;list-style:none}
+.nav-links a{text-decoration:none;font-size:.92rem;font-weight:500;color:rgba(255,255,255,.85);transition:color .25s}
+.nav-links a:hover{color:#fff}
+.nav-links a.btn-primary{color:var(--red);background:#fff}
+.nav-links a.btn-primary:hover{color:var(--red-deep);background:var(--cream)}
+nav.nav-fixed .nav-links a:not(.btn-primary){color:var(--ink-soft)}
+nav.nav-fixed .nav-links a:not(.btn-primary):hover{color:var(--red)}
+nav.nav-fixed .nav-cta{background:var(--red) !important;color:#fff !important}
+nav.nav-fixed .nav-cta:hover{background:var(--red-deep) !important}
+.nav-cta{padding:10px 22px !important;font-size:.88rem !important;white-space:nowrap}
+@media(max-width:900px){.nav-links li:not(.nav-cta-li){display:none}}
+@media(max-width:480px){
+  .nav-inner{height:64px}
+  .nav-logo img{height:20px}
+  .nav-cta{padding:8px 14px !important;font-size:.76rem !important}
+}
+
+/* MARQUEE */
+.marquee{background:var(--ink);color:var(--cream);overflow:hidden;padding:14px 0;white-space:nowrap}
+.marquee-track{display:inline-flex;animation:marquee 34s linear infinite}
+.marquee span{display:inline-flex;align-items:center;gap:16px;font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:0 22px}
+.marquee span::after{content:"◆";color:var(--red-bright);font-size:.6rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/* HERO — bento */
+.hero{padding:150px 0 0;background:var(--red);overflow:hidden;position:relative}
+.hero::before{content:"";position:absolute;inset:0;background:url('assets/pattern.svg');background-size:900px;opacity:.45;filter:invert(1) brightness(1.7);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.b-head h1{color:#fff}
+.b-head h1 mark{color:var(--cream) !important}
+.b-head .lead{color:rgba(255,255,255,.82)}
+.doodle-circle path{stroke:#fff !important}
+.doodle-spark.d1 path{stroke:#fff !important;opacity:.8}
+.doodle-spark.d2 path{stroke:#fff !important;opacity:.6}
+.b-head .btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}
+.b-head .btn-ghost:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.1)}
+.b-head .btn-primary{background:#fff;color:var(--red)}
+.b-head .btn-primary:hover{background:var(--cream);color:var(--red-deep)}
+.hero-wave{display:block;width:100%;height:64px;margin-top:56px;position:relative;z-index:1}
+@media(max-width:560px){.hero-wave{height:40px;margin-top:36px}}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:auto repeat(8,88px);gap:14px;position:relative}
+.bento>*{border-radius:20px;overflow:hidden;position:relative}
+.b-head{grid-column:1/5;grid-row:2/7;background:transparent;display:flex;flex-direction:column;justify-content:center;padding:0 6px 0 0;overflow:visible}
+.b-head h1{font-size:clamp(2.1rem,3.9vw,3.3rem);margin-bottom:18px}
+.b-head h1 mark{color:var(--red);position:relative;white-space:nowrap}
+.doodle-wrap{position:relative;display:inline-block}
+.doodle-circle{position:absolute;left:-14%;top:-32%;width:128%;height:190%;pointer-events:none;z-index:-1}
+.b-head .lead{margin-bottom:28px}
+.doodle-spark{position:absolute;pointer-events:none;opacity:.55;z-index:0}
+.doodle-spark.d1{width:64px;top:-38px;right:14%;transform:rotate(-8deg)}
+.doodle-spark.d2{width:46px;bottom:22px;left:-6px;transform:rotate(14deg)}
+.b-live{grid-column:1/7;grid-row:1/2;justify-self:start;align-self:start;margin-bottom:6px;background:#fff;color:var(--ink);display:flex;align-items:center;gap:10px;padding:14px 22px;font-size:.82rem;font-weight:700;line-height:1.35;white-space:nowrap;border-radius:999px !important;box-shadow:0 10px 24px -10px rgba(0,0,0,.35);transform:rotate(-2deg)}
+.b-live .dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.8s infinite;flex:0 0 auto}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.b-photo1{grid-column:5/7;grid-row:3/7;box-shadow:var(--shadow)}
+.b-photo1 img{width:100%;height:100%;object-fit:cover;display:block}
+.b-photo2{grid-column:1/3;grid-row:7/10}
+.b-photo3{grid-column:3/5;grid-row:7/10;transform:rotate(2.5deg) scale(.94);box-shadow:var(--shadow);z-index:2}
+.b-photo2 img,.b-photo3 img{width:100%;height:100%;object-fit:cover}
+.b-actions{grid-column:5/7;grid-row:7/10;display:flex;flex-direction:column;justify-content:center;gap:12px;background:var(--cream2);padding:22px}
+.b-actions .btn{width:100%;justify-content:center}
+@media(max-width:900px){
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
+  .b-head{grid-column:1/3;grid-row:1;padding-top:6px}
+  .b-live{grid-column:1/3;grid-row:2;padding:12px 18px;white-space:normal}
+  .b-photo1{grid-column:1/2;grid-row:3;aspect-ratio:1/1}
+  .b-photo3{grid-column:2/3;grid-row:3;aspect-ratio:1/1}
+  .b-photo2{grid-column:1/3;grid-row:4;aspect-ratio:2.4/1}
+  .b-actions{grid-column:1/3;grid-row:5;padding:26px}
+  .hero{padding-top:112px}
+}
+@media(max-width:560px){
+  .hero{padding-top:128px}
+  .bento{display:flex;flex-direction:column;gap:16px}
+  .b-head h1{font-size:clamp(1.9rem,8vw,2.4rem)}
+  .b-live{padding:12px 18px;border-radius:999px;align-self:flex-start;font-size:.76rem;white-space:normal}
+  .b-photo1{aspect-ratio:4/3.6;border-radius:22px;box-shadow:var(--shadow)}
+  .b-photo1 img{height:100%}
+  .b-photo3{display:none}
+  .b-photo2{aspect-ratio:16/10;border-radius:18px}
+  .b-actions{border-radius:18px}
+}
+
+/* TRUST STRIP */
+.trust{padding:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.trust .wrap{display:flex;align-items:center;justify-content:center;gap:44px;flex-wrap:wrap}
+.trust span{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+.trust img{height:42px;width:auto;object-fit:contain;mix-blend-mode:multiply}
+.trust-partners{display:flex;align-items:center;gap:20px;flex-wrap:nowrap}
+@media(max-width:600px){
+  .trust{padding:24px 0}
+  .trust .wrap{flex-direction:column;align-items:center;gap:16px}
+  .trust .wrap>img{height:36px}
+  .trust-partners{width:100%;justify-content:space-between;gap:10px}
+  .trust-partners img{flex:1 1 0;max-width:23%;width:auto;height:auto;max-height:48px;object-fit:contain}
+}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-media{position:relative}
+.about-media img{border-radius:20px;box-shadow:var(--shadow)}
+.about-points{margin-top:28px;display:grid;gap:16px}
+.point{display:flex;gap:14px;align-items:flex-start}
+.point .ico{flex:0 0 42px;height:42px;border-radius:12px;background:var(--cream2);display:grid;place-items:center;color:var(--red)}
+.point b{display:block;font-size:.98rem}
+.point p{font-size:.9rem;color:var(--ink-soft)}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+
+/* STORY — narrative timeline */
+.story{background:linear-gradient(180deg,#fff, var(--cream));border-top:1px solid var(--line)}
+.story .wrap{position:relative}
+.story-scatter{position:absolute;top:0;right:0;width:460px;height:100%;pointer-events:none;display:none}
+@media(min-width:1350px){.story-scatter{display:block}}
+.scatter-photo{position:absolute;width:190px;border-radius:16px;overflow:hidden;box-shadow:0 16px 34px -14px rgba(0,0,0,.35);border:5px solid #fff;cursor:grab;pointer-events:auto;-webkit-user-select:none;user-select:none;touch-action:none;background:#fff;transform:rotate(var(--r,0deg));animation:floaty 5s ease-in-out infinite;animation-delay:var(--d,0s)}
+.scatter-photo:active{cursor:grabbing;animation-play-state:paused}
+.scatter-photo.dragging{animation-play-state:paused}
+.scatter-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;pointer-events:none}
+@keyframes floaty{0%,100%{transform:rotate(var(--r,0deg)) translateY(0)}50%{transform:rotate(var(--r,0deg)) translateY(-12px)}}
+@media(prefers-reduced-motion:reduce){.scatter-photo{animation:none}}
+.story-line{margin-top:52px;position:relative;padding-left:32px;border-left:2px solid var(--line)}
+.beat{position:relative;padding-bottom:42px}
+.beat:last-child{padding-bottom:0}
+.beat::before{content:"";position:absolute;left:-38px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--red);border:3px solid var(--cream)}
+.beat .yr{font-family:'Lora',serif;font-weight:700;color:var(--red);font-size:1.05rem;margin-bottom:6px}
+.beat h3{font-size:1.25rem;margin-bottom:8px}
+.beat p{color:var(--ink-soft);font-size:.96rem;max-width:640px}
+.beat .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--cream2);color:var(--red);padding:4px 10px;border-radius:999px;margin-bottom:10px}
+
+/* PHASES */
+.phases{background:var(--magenta);color:#fff;overflow:hidden}
+.phases::before{content:"";position:absolute;inset:0;background:url('assets/pattern.svg');background-size:800px;opacity:.5;filter:invert(1);pointer-events:none}
+.phases .wrap{position:relative}
+.phases .eyebrow{color:#f9cccc}.phases .eyebrow::before{background:#f9cccc}
+.phases .lead{color:rgba(255,255,255,.78)}
+.timeline{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.phase{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:28px 24px;backdrop-filter:blur(4px)}
+.phase.current{background:#fff;color:var(--ink)}
+.phase .tag{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#f9cccc;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.phase.current .tag{color:var(--red)}
+.phase h3{font-size:1.2rem;margin-bottom:6px}
+.phase .where{font-size:.85rem;opacity:.75;margin-bottom:18px;min-height:2.6em}
+.phase .stats{display:flex;gap:22px;border-top:1px solid rgba(255,255,255,.18);padding-top:16px}
+.phase.current .stats{border-top-color:var(--line)}
+.phase .stats b{font-family:'Lora',serif;font-size:1.5rem;display:block;line-height:1.1}
+.phase .stats span{font-size:.74rem;opacity:.7;text-transform:uppercase;letter-spacing:.08em}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--red-bright);animation:pulse 1.6s infinite}
+@media(max-width:900px){.timeline{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.timeline{grid-template-columns:1fr}}
+
+/* IMPACT MOSAIC */
+.impact{background:#fff;border-top:1px solid var(--line)}
+.mosaic{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:96px;gap:16px;margin-top:48px}
+.mtile{border-radius:20px;padding:26px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.mtile b{font-family:'Lora',serif;font-size:clamp(2.2rem,3.6vw,3rem);line-height:1}
+.mtile .lbl{font-weight:700;font-size:.98rem;margin-top:8px}
+.mtile p{font-size:.85rem;margin-top:6px;max-width:34ch}
+.m-red{grid-column:1/4;grid-row:1/3;background:var(--red);color:#fff}
+.m-red p{color:rgba(255,255,255,.85)}
+.m-ink{grid-column:4/7;grid-row:1/3;background:var(--ink);color:#fff}
+.m-ink p{color:rgba(255,255,255,.7)}
+.m-cream{grid-column:1/3;grid-row:3/5;background:var(--cream2);color:var(--ink)}
+.m-cream p{color:var(--ink-soft)}
+.m-bordered{grid-column:3/5;grid-row:3/5;background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+.m-bordered p{color:var(--ink-soft)}
+.m-photo{grid-column:5/7;grid-row:3/5;padding:0}
+.m-photo img{width:100%;height:100%;object-fit:cover}
+@media(max-width:900px){
+  .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
+  .m-red,.m-ink,.m-cream,.m-bordered,.m-photo{grid-column:1/3;grid-row:auto;min-height:150px}
+  .m-photo{aspect-ratio:16/10}
+}
+
+/* REALITY — the honest section */
+.reality{background:var(--ink);color:#fff}
+.reality .eyebrow{color:#f2b8b8}.reality .eyebrow::before{background:var(--red-bright)}
+.reality .lead{color:rgba(255,255,255,.72)}
+.rgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:48px;border:1px solid rgba(255,255,255,.14);border-radius:20px;overflow:hidden}
+.rcol{padding:34px 32px}
+.rcol:first-child{border-right:1px solid rgba(255,255,255,.14);background:rgba(200,28,28,.1)}
+.rcol h3{font-size:1.05rem;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.rcol ul{list-style:none;display:grid;gap:14px}
+.rcol li{display:flex;align-items:flex-start;gap:10px;font-size:.92rem;color:rgba(255,255,255,.8)}
+.rcol li svg{flex:0 0 auto;margin-top:2px;color:rgba(255,255,255,.4)}
+.rcol.fix li svg{color:#7fd88f}
+@media(max-width:800px){.rgrid{grid-template-columns:1fr}.rcol:first-child{border-right:none;border-bottom:1px solid rgba(255,255,255,.14)}}
+
+/* PROJECTS */
+.projects .cards{display:flex;gap:22px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;margin-top:48px;padding-bottom:4px;scrollbar-width:none;-ms-overflow-style:none}
+.projects .cards::-webkit-scrollbar{display:none}
+.pcard{flex:0 0 320px;scroll-snap-align:start;border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;transition:.25s}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.pcard img{aspect-ratio:16/10;object-fit:cover}
+.pcard .rank-head{aspect-ratio:16/10;background:var(--ink);color:#fff;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:20px;position:relative;overflow:hidden}
+.pcard .rank-head::before{content:"";position:absolute;inset:0;background:url('assets/pattern.svg');background-size:400px;opacity:.35;filter:invert(1)}
+.pcard .rank-head b{position:relative;font-family:'Lora',serif;font-size:2.4rem;color:var(--red-bright)}
+.pcard .rank-head span{position:relative;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.pcard .body{padding:26px}
+.pcard h3{font-size:1.18rem;margin-bottom:8px}
+.pcard p{font-size:.9rem;color:var(--ink-soft)}
+.pcard .chip{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);background:var(--cream2);padding:5px 12px;border-radius:999px;margin-bottom:12px}
+
+/* VIDEO */
+.video{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.video-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;margin-top:44px;align-items:center}
+.video-frame{border-radius:20px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:16/9;background:#000}
+.video-frame iframe{width:100%;height:100%;border:0}
+.video-side blockquote{font-family:'Lora',serif;font-style:italic;font-size:1.2rem;line-height:1.4;margin-bottom:14px}
+.video-side cite{font-style:normal;font-weight:600;display:block;font-size:.9rem;color:var(--red)}
+.video-more{margin-top:22px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+@media(max-width:900px){.video-grid{grid-template-columns:1fr}}
+
+/* TESTIMONIALS */
+.quotes{background:var(--cream)}
+.quote{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 32px;position:relative;display:flex;flex-direction:column;height:100%}
+.quote .mark{font-family:'Lora',serif;font-size:3.4rem;line-height:0;color:var(--red-bright);position:absolute;top:38px;left:30px;opacity:.9}
+.quote p{font-size:.97rem;color:var(--ink-soft);font-style:italic;margin:18px 0 22px;padding-top:8px;flex:1 1 auto}
+.quote .who{display:flex;align-items:center;gap:14px;margin-top:auto}
+.quote .avatar{width:46px;height:46px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:700;font-family:'Lora',serif;flex:0 0 46px}
+.quote .who b{display:block;font-size:.94rem}
+.quote .who span{font-size:.8rem;color:var(--ink-soft)}
+.quote .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.feature-quote{display:flex;margin-top:48px;border-radius:20px;overflow:hidden;background:var(--ink)}
+.feature-photo{flex:0 0 300px;background:var(--cream2);display:flex;align-items:flex-end;justify-content:center}
+.feature-photo img{width:100%;max-height:380px;object-fit:cover;object-position:top center}
+.feature-body{flex:1 1 auto;padding:40px 42px;color:#fff}
+.feature-body .mark{font-family:'Lora',serif;font-size:3.4rem;line-height:0;color:var(--red-bright);opacity:.9;display:block;margin-bottom:16px}
+.feature-body p{color:rgba(255,255,255,.85);font-size:1.12rem;font-style:italic;margin-bottom:22px}
+.feature-body .who b{display:block;font-size:.98rem;color:#fff}
+.feature-body .who span{font-size:.82rem;color:rgba(255,255,255,.6)}
+@media(max-width:700px){.feature-quote{flex-direction:column}.feature-photo{flex:0 0 auto}.feature-photo img{max-height:280px}}
+.quote-slider{margin-top:26px}
+.quote-track{display:flex;gap:22px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:4px;scrollbar-width:none;-ms-overflow-style:none}
+.quote-track::-webkit-scrollbar{display:none}
+.quote-track .quote{flex:0 0 calc(50% - 11px);scroll-snap-align:start}
+@media(max-width:900px){.quote-track .quote{flex:0 0 88%}}
+.slider-nav{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
+.slider-btn{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:.2s}
+.slider-btn:hover{border-color:var(--red);color:var(--red)}
+
+/* JURY / CREDIBILITY */
+.cred{background:#fff;border-top:1px solid var(--line)}
+.cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:48px}
+.cred h3{font-size:1.25rem;margin-bottom:20px}
+.cred ul{list-style:none;display:grid;gap:16px}
+.cred li{display:flex;gap:14px;font-size:.94rem;align-items:center}
+.cred li .avatar{width:46px;height:46px;border-radius:50%;flex:0 0 46px;overflow:hidden;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:700;font-family:'Lora',serif;font-size:.92rem}
+.cred li .avatar img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.cred li b{color:var(--ink);display:block}
+.cred li span{color:var(--ink-soft)}
+.chip-list{display:grid !important;grid-template-columns:repeat(2,1fr);gap:16px 22px}
+.chip-list li{align-items:flex-start;gap:9px}
+.chip-list li::before{content:"→";color:var(--red);font-weight:700;font-size:.85em;flex:0 0 auto;margin-top:2px}
+.chip-list li .who-info{display:flex;flex-direction:column;gap:2px;min-width:0}
+.chip-list li b{white-space:normal}
+.chip-list li span{font-size:.78rem}
+@media(max-width:700px){.chip-list{grid-template-columns:1fr}}
+@media(max-width:560px){.chip-list{grid-template-columns:1fr}}
+@media(max-width:900px){.cred-grid{grid-template-columns:1fr}}
+
+/* DE'LEAD SPOTLIGHT */
+.spotlight{background:var(--ink);color:#fff;overflow:hidden}
+.spotlight::before{content:"";position:absolute;inset:0;background:url('assets/pattern.svg');background-size:820px;opacity:.28;filter:invert(1)}
+.spotlight .wrap{position:relative}
+.spotlight .eyebrow{color:#f2b8b8}.spotlight .eyebrow::before{background:var(--red-bright)}
+.spotlight .lead{color:rgba(255,255,255,.72)}
+.spot-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:48px;align-items:start}
+.spot-facts{display:grid;gap:18px}
+.spot-fact{display:flex;gap:14px}
+.spot-fact .ico{flex:0 0 40px;height:40px;border-radius:10px;background:rgba(255,255,255,.08);display:grid;place-items:center;color:var(--red-bright)}
+.spot-fact b{display:block;font-size:.96rem}
+.spot-fact p{font-size:.87rem;color:rgba(255,255,255,.65)}
+.spot-people{display:grid;gap:20px}
+.person{background:var(--cream);border-radius:18px;overflow:hidden;display:flex;align-items:center}
+.person .p-photo{flex:0 0 170px;background:var(--cream2);aspect-ratio:1/1}
+.person .p-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.person .p-body{padding:22px 24px;flex:1 1 auto}
+.person p{font-size:.9rem;font-style:italic;color:var(--ink-soft);margin-bottom:14px}
+.person b{font-size:.92rem;color:var(--ink)}
+.person span{font-size:.8rem;color:var(--ink-soft);display:block}
+@media(max-width:640px){.person{flex-direction:column;align-items:stretch}.person .p-photo{flex:0 0 auto;aspect-ratio:16/10}}
+.tagline{margin-top:44px;text-align:center;font-family:'Lora',serif;font-style:italic;font-size:1.3rem;color:#f2b8b8}
+@media(max-width:900px){.spot-grid{grid-template-columns:1fr}}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.gallery-grid img{border-radius:14px;aspect-ratio:1/1;object-fit:cover;cursor:zoom-in;transition:.25s}
+.gallery-grid img:hover{transform:scale(1.02);box-shadow:var(--shadow)}
+.gallery-grid .wide{grid-column:span 2}
+.gallery-grid .wide img{aspect-ratio:2.08/1}
+@media(max-width:700px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+.lightbox{position:fixed;inset:0;background:rgba(20,10,16,.94);z-index:200;display:none;place-items:center;padding:30px;cursor:zoom-out}
+.lightbox.open{display:grid}
+.lightbox img{max-height:88vh;max-width:100%;border-radius:12px}
+
+/* STAKEHOLDERS */
+.stake .cards{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:22px;margin-top:48px;align-items:stretch}
+.scard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 30px}
+.scard.lead-card{background:var(--magenta);color:#fff;border:none}
+.scard.lead-card .role{color:#f3c9e2}
+.scard.lead-card p{color:rgba(255,255,255,.85)}
+.scard img{height:52px;width:auto;object-fit:contain;margin-bottom:20px;mix-blend-mode:multiply}
+.scard.lead-card img{mix-blend-mode:normal;filter:brightness(0) invert(1)}
+.scard .role{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.scard h3{font-size:1.15rem;margin-bottom:10px}
+.scard p{font-size:.88rem;color:var(--ink-soft)}
+.diet-logos{display:flex;gap:12px;margin-bottom:20px}
+.diet-logos img{height:52px;margin:0}
+@media(max-width:900px){.stake .cards{grid-template-columns:1fr}}
+
+/* CTA */
+.cta{background:var(--ink);color:#fff;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background:url('assets/pattern.svg');background-size:820px;opacity:.35;filter:invert(1)}
+.cta .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.cta .eyebrow{color:#f2b8b8}.cta .eyebrow::before{background:var(--red-bright)}
+.cta h2{font-size:clamp(2rem,3.6vw,3rem);margin-bottom:20px}
+.cta .lead{color:rgba(255,255,255,.75);margin-bottom:34px}
+.cta-contacts{display:grid;gap:14px;margin-top:8px}
+.cta-contacts a{display:flex;align-items:center;gap:14px;text-decoration:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);padding:16px 20px;border-radius:14px;transition:.2s;font-size:.95rem}
+.cta-contacts a:hover{background:rgba(255,255,255,.12)}
+.cta-contacts .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--red);flex:0 0 38px;font-size:1rem}
+.cta-contacts a.wa .ic{background:#25d366}
+form{background:#fff;border-radius:20px;padding:38px 34px;color:var(--ink);box-shadow:var(--shadow)}
+form h3{font-size:1.3rem;margin-bottom:6px}
+form .sub{font-size:.88rem;color:var(--ink-soft);margin-bottom:24px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:.78rem;font-weight:600;margin-bottom:6px;color:var(--ink-soft)}
+.field input,.field textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:.92rem;background:var(--cream)}
+.field textarea{resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--red)}
+form .btn{width:100%;justify-content:center;margin-top:6px}
+@media(max-width:900px){.cta .wrap{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:#17131a;color:rgba(255,255,255,.65);padding:52px 0;font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+footer img{height:22px;opacity:.9}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-logo" href="#top"><img class="logo-color" src="assets/walk2lead-logo.svg" alt="Walk2Lead"><img class="logo-white" src="assets/walk2lead-logo-white.svg" alt="Walk2Lead"></a>
+    <ul class="nav-links">
+      <li><a href="#story">Story</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#reality">How We Deliver</a></li>
+      <li><a href="#voices">Voices</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li class="nav-cta-li"><a class="btn btn-primary nav-cta" href="#partner">Partner With Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO — bento -->
+<header class="hero" id="top">
+  <div class="wrap bento">
+    <div class="b-head reveal">
+      <svg class="doodle-spark d1" viewBox="0 0 60 60" fill="none" aria-hidden="true"><path d="M30 4 C33 20 40 27 56 30 C40 33 33 40 30 56 C27 40 20 33 4 30 C20 27 27 20 30 4 Z" stroke="var(--red-bright)" stroke-width="2" stroke-linejoin="round"/></svg>
+      <svg class="doodle-spark d2" viewBox="0 0 60 24" fill="none" aria-hidden="true"><path d="M2 12 C10 3 16 3 22 12 C28 21 34 21 40 12 C46 3 52 3 58 12" stroke="var(--magenta)" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <h1>44 government schools. <span class="doodle-wrap"><mark>1,300+</mark><svg class="doodle-circle" viewBox="0 0 200 90" fill="none" aria-hidden="true"><path d="M14,42 C10,14 58,2 101,4 C152,6 197,17 191,47 C186,76 129,87 89,84 C38,81 19,73 14,42 Z" stroke="var(--red)" stroke-width="3" stroke-linecap="round"/></svg></span> children. Robots that actually worked.</h1>
+      <p class="lead">Walk2Lead Robotics Tech Quest brings hands-on robotics, coding and AI into rural government schools across Kerala, funded by Walkaroo Foundation and planned, staffed and delivered end-to-end by <strong>De' Lead International</strong>. Four phases. Scaling every time.</p>
+      <div class="hero-actions" style="display:flex;gap:14px;flex-wrap:wrap">
+        <a class="btn btn-primary" href="#partner">Start a CSR project →</a>
+        <a class="btn btn-ghost" href="#reality">See how we deliver</a>
+      </div>
+    </div>
+    <div class="b-live reveal"><span class="dot"></span> Phase 4 running now in Kozhikode, Malappuram &amp; Wayanad</div>
+    <div class="b-photo1 reveal"><img src="assets/hero-kids-demo.jpg" alt="Students demonstrating their robotics project"></div>
+    <div class="b-photo2 reveal"><img src="assets/robot-track.jpg" alt="Student-built robot on test track"></div>
+    <div class="b-photo3 reveal"><img src="assets/robot-yellow-track.png" alt="Students watching their robot run the test track"></div>
+    <div class="b-actions reveal">
+      <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Executed by De' Lead International</div>
+      <p style="font-size:.85rem;color:var(--ink-soft);margin-bottom:6px">India &amp; UAE · "Learn, Develop &amp; Lead"</p>
+      <a class="btn btn-ghost" href="#delead">Why us →</a>
+    </div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0,32 C240,80 480,0 720,28 C960,56 1200,88 1440,40 L1440,90 L0,90 Z" fill="var(--ink)"/></svg>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Robotics</span><span>Arduino</span><span>Sensors</span><span>AI-Assisted Coding</span><span>Design Thinking</span><span>School Expos</span><span>District Innovators Expo</span>
+    <span>Robotics</span><span>Arduino</span><span>Sensors</span><span>AI-Assisted Coding</span><span>Design Thinking</span><span>School Expos</span><span>District Innovators Expo</span>
+  </div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="trust reveal">
+  <div class="wrap">
+    <span>Delivered with</span>
+    <img loading="lazy" decoding="async" src="assets/logo-delead-dark.png" alt="De' Lead International">
+    <div class="trust-partners">
+      <img loading="lazy" decoding="async" src="assets/logo-walkaroo.jpg" alt="Walkaroo Foundation">
+      <img loading="lazy" decoding="async" src="assets/logo-diet-mlp.jpg" alt="DIET Malappuram">
+      <img loading="lazy" decoding="async" src="assets/logo-diet-kkd.png" alt="DIET Kozhikode">
+      <img loading="lazy" decoding="async" src="assets/logo-diet-knr.jpg" alt="DIET Kannur">
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT / PROGRAM -->
+<section id="program">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="eyebrow">The Programme</div>
+      <h2 class="h2">A 3-month journey from curiosity to a working robot</h2>
+      <p class="lead">Walk2Lead Robotics Tech Quest is a three-month, activity-based programme for Classes 6 &amp; 7 in government schools, reaching children in rural and coastal communities who rarely get access to STEM education of this quality.</p>
+      <div class="about-points">
+        <div class="point"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></div><div><b>~26 hands-on sessions per school</b><p>Electronics, Arduino, sensors, coding fundamentals and AI-assisted building, with every student prototyping on real kits, not slides.</p></div></div>
+        <div class="point"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></div><div><b>Two-stage merit selection</b><p>An orientation ideathon, then a school-conducted written aptitude test, selects ~30 students per school from cohorts of 300–400 applicants.</p></div></div>
+        <div class="point"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px" aria-hidden="true"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div><div><b>School expos → District Innovators Expo</b><p>Every phase ends with students pitching working prototypes to an external jury of technologists and educators.</p></div></div>
+        <div class="point"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div><div><b>Real-time transparency portal</b><p>Walkaroo tracks session progress, attendance and school-wise detail live on the Walk2Lead portal, for full visibility and board-ready reporting.</p></div></div>
+      </div>
+    </div>
+    <div class="about-media reveal">
+      <img loading="lazy" decoding="async" src="assets/kids-building.jpg" alt="Students building their robotics project together">
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="eyebrow reveal">The Story</div>
+    <h2 class="h2 reveal">One school in Kozhikode. Now three districts, running at once.</h2>
+    <p class="lead reveal">Kinalur GUPS was a single pilot in 2023. Walk2Lead has since reached Kozhikode, Malappuram, Wayanad and Kannur, expanding with every phase.</p>
+    <div class="story-scatter" id="story-scatter">
+      <div class="scatter-photo" style="top:140px;left:40px;--r:-6deg;--d:0s;z-index:1"><img src="assets/boy-mic.jpg" alt="Student presenting his project" loading="lazy" decoding="async"></div>
+      <div class="scatter-photo" style="top:255px;left:250px;--r:5deg;--d:.5s;z-index:2"><img src="assets/girl-mic-team.jpg" alt="Student team presenting" loading="lazy" decoding="async"></div>
+      <div class="scatter-photo" style="top:370px;left:60px;--r:4deg;--d:1s;z-index:3"><img src="assets/award-kids.jpg" alt="Students receiving recognition" loading="lazy" decoding="async"></div>
+      <div class="scatter-photo" style="top:485px;left:240px;--r:-4deg;--d:1.5s;z-index:4"><img src="assets/panel.jpg" alt="Stakeholder panel at district event" loading="lazy" decoding="async"></div>
+      <div class="scatter-photo" style="top:600px;left:50px;--r:7deg;--d:2s;z-index:5"><img src="assets/memento-group.jpg" alt="Memento distribution ceremony" loading="lazy" decoding="async"></div>
+      <div class="scatter-photo" style="top:715px;left:230px;--r:-8deg;--d:2.5s;z-index:6"><img src="assets/inauguration.jpg" alt="Programme inauguration" loading="lazy" decoding="async"></div>
+      <div class="scatter-photo" style="top:830px;left:90px;--r:6deg;--d:3s;z-index:7"><img src="assets/project-table.jpg" alt="Students demonstrating a prototype" loading="lazy" decoding="async"></div>
+      <div class="scatter-photo" style="top:930px;left:260px;--r:-5deg;--d:3.5s;z-index:8"><img src="assets/expo-team1.jpg" alt="Team at the expo" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="story-line">
+      <div class="beat reveal">
+        <div class="tag">2023 · Phase 1</div>
+        <div class="yr">Kinalur GUPS, Kozhikode</div>
+        <h3>The pilot nobody had to renew</h3>
+        <p>One school, 48 students, no track record to point to. De' Lead ran the full 26-session curriculum anyway, taking students from electronics to a working prototype, presented by 12-year-olds. It was enough to take the programme into a second district next.</p>
+      </div>
+      <div class="beat reveal">
+        <div class="tag">Phase 2 · Scale-up</div>
+        <div class="yr">Malappuram &amp; Kozhikode</div>
+        <h3>16 schools, 480 students: the first real test of the system</h3>
+        <p>Two districts at once meant real operational strain: shared laptops, patchy power, schools running in parallel across both. The programme still delivered a documented <strong>92.99% average attendance</strong>, tracked school-by-school, not estimated.</p>
+      </div>
+      <div class="beat reveal">
+        <div class="tag">Phase 3 · New ground</div>
+        <div class="yr">Kannur</div>
+        <h3>Proving it wasn't a one-district fluke</h3>
+        <p>3 schools, 90 students, including DIET's own Lab School in Palayad, with the academic partner trusting the programme inside its own training ground.</p>
+      </div>
+      <div class="beat reveal">
+        <div class="tag">Phase 4 · Running now</div>
+        <div class="yr">Kozhikode, Malappuram &amp; Wayanad</div>
+        <h3>24 schools, 705 students, and a jump to the international stage</h3>
+        <p>The largest phase yet. Twelve students from this cohort were selected for the international <strong>Zero2Entrepreneur 2025 Bootcamp</strong>: 5 from Kozhikode, 7 from Malappuram, held 28 Nov–4 Dec 2025. Government-school kids from Phase 4, on a global startup stage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASES -->
+<section class="phases" id="phases">
+  <div class="wrap">
+    <div class="eyebrow reveal">By The Numbers</div>
+    <h2 class="h2 reveal">Every phase, funded on the results of the last</h2>
+    <p class="lead reveal">The strongest endorsement a CSR programme can earn: the same funder, paying for it four times running.</p>
+    <div class="timeline">
+      <div class="phase reveal"><div class="tag">Phase 1 · Pilot</div><h3>Kinalur GUPS</h3><div class="where">Kozhikode, where it all began</div><div class="stats"><div><b>1</b><span>School</span></div><div><b>48</b><span>Students</span></div></div></div>
+      <div class="phase reveal"><div class="tag">Phase 2 · Scale-up</div><h3>Two Districts</h3><div class="where">Malappuram &amp; Kozhikode</div><div class="stats"><div><b>16</b><span>Schools</span></div><div><b>480</b><span>Students</span></div></div></div>
+      <div class="phase reveal"><div class="tag">Phase 3 · New Ground</div><h3>Kannur</h3><div class="where">Incl. DIET Lab School, Palayad</div><div class="stats"><div><b>3</b><span>Schools</span></div><div><b>90</b><span>Students</span></div></div></div>
+      <div class="phase current reveal"><div class="tag"><span class="live-dot"></span> Phase 4 · Running Now</div><h3>Three Districts</h3><div class="where">Kozhikode, Malappuram &amp; Wayanad</div><div class="stats"><div><b>24</b><span>Schools</span></div><div><b>705</b><span>Students</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT MOSAIC -->
+<section class="impact" id="impact">
+  <div class="wrap">
+    <div class="eyebrow reveal">The Numbers</div>
+    <h2 class="h2 reveal">What four phases add up to</h2>
+    <p class="lead reveal">Not vanity metrics: every number here is verified against school-wise attendance records and session reports.</p>
+    <div class="mosaic reveal">
+      <div class="mtile m-red"><b data-count="44">0</b><div class="lbl">Schools Implemented</div><p>Government UP &amp; high schools across four districts, each running the full 26-session curriculum.</p></div>
+      <div class="mtile m-ink"><b data-count="1300" data-suffix="+">0</b><div class="lbl">Students = Families Reached</div><p>Grades 6 &amp; 7, selected from cohorts of 300–400 applicants per school, in rural &amp; coastal Kerala.</p></div>
+      <div class="mtile m-cream"><b data-count="4">0</b><div class="lbl">Districts Reached</div><p>Kozhikode, Malappuram, Kannur &amp; Wayanad, across four phases.</p></div>
+      <div class="mtile m-bordered"><b data-count="12">0</b><div class="lbl">→ International bootcamp</div><p>Selected for Zero2Entrepreneur 2025, Nov–Dec, in Kozhikode &amp; Malappuram.</p></div>
+      <div class="m-photo reveal"><img loading="lazy" decoding="async" src="assets/big-group.jpg" alt="Walk2Lead cohort group photo"></div>
+    </div>
+    <p style="text-align:center;color:var(--ink-soft);font-size:.9rem;margin-top:22px"><b style="color:var(--red)">10+ sub-education districts</b> reached across the four.</p>
+  </div>
+</section>
+
+<!-- REALITY -->
+<section class="reality" id="reality">
+  <div class="wrap">
+    <div class="eyebrow reveal">How We Actually Deliver</div>
+    <h2 class="h2 reveal">It wasn't smooth. Here's the log.</h2>
+    <p class="lead reveal">Anyone can promise delivery. We can show you the outage log and what we did about it, because we tracked it, phase over phase, in the same reports we hand our funder.</p>
+    <div class="rgrid reveal">
+      <div class="rcol">
+        <h3>What went wrong</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg><span>Intermittent power and internet across rural school labs</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg><span>Laptops shared 1-to-3 in several schools</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg><span>Wi-Fi access windows limiting simulation time</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg><span>Driver and hardware-compatibility issues on ageing school systems</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg><span>Learning pace variation needing repetition for mastery</span></li>
+        </ul>
+      </div>
+      <div class="rcol fix">
+        <h3>What we did about it</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><span>Mobile hotspots and extended Wi-Fi windows on standby</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><span>Extension boards and systematic driver checks before every session</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><span>Team laptop-sharing protocols and seat reorganisation</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><span>Structured buffer sessions and micro-projects to consolidate concepts</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><span>Points-based systems to sustain discipline and peer learning</span></li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:24px;color:rgba(255,255,255,.55);font-size:.85rem">Source: internal session &amp; coordinator reports, tracked school-by-school every phase: the same documents we share with Walkaroo Foundation.</p>
+  </div>
+</section>
+
+<!-- STUDENT PROJECTS -->
+<section class="projects">
+  <div class="wrap">
+    <div class="eyebrow reveal">Proof, not promises</div>
+    <h2 class="h2 reveal">What 12-year-olds built</h2>
+    <p class="lead reveal">Not toy demos: socially relevant prototypes, designed, coded and presented by government school students.</p>
+    <div class="cards" id="proj-track">
+      <div class="pcard reveal"><img loading="lazy" decoding="async" src="assets/expo-robot.jpg" alt="Student robotics prototype at expo"><div class="body"><span class="chip">Environment</span><h3>Waste-Collecting River Boat</h3><p>An Arduino-based boat using ultrasonic sensors to detect floating waste, DC-motor propellers and a front-mounted collection net, a low-cost answer to river and sea cleaning.</p></div></div>
+      <div class="pcard reveal"><img loading="lazy" decoding="async" src="assets/kids-project2.jpg" alt="Students presenting their project"><div class="body"><span class="chip">Healthcare</span><h3>Medicine Delivery Robot</h3><p>An autonomous assistant designed to support patients and reduce waiting time inside healthcare facilities.</p></div></div>
+      <div class="pcard reveal"><img loading="lazy" decoding="async" src="assets/kids-present.jpg" alt="Students demonstrating their prototype"><div class="body"><span class="chip">Healthcare</span><h3>Urine Bag Fill Alert</h3><p>Automatically monitors urine bag levels and alerts hospital staff when full, for timely intervention, better hygiene, real patient impact.</p></div></div>
+      <div class="pcard reveal"><img loading="lazy" decoding="async" src="assets/expo-project-3.png" alt="Students presenting a robotics project at the district expo"><div class="body"><span class="chip">Awareness</span><h3>Money Eating Monster</h3><p>GSHSS Meppayil: a build raising awareness around wasteful spending.</p></div></div>
+      <div class="pcard reveal"><img loading="lazy" decoding="async" src="assets/expo-project-4.png" alt="Students presenting a robotics project at the district expo"><div class="body"><span class="chip">Home Safety</span><h3>Gas Stove Automation System</h3><p>GUPS Thurayur: an automatic shutoff system built for kitchen safety in the home.</p></div></div>
+      <div class="pcard reveal"><div class="rank-head"><span>GUPS Manassery</span><b>+</b></div><div class="body"><span class="chip">Agriculture</span><h3>Smart Farming Robot</h3><p>Built by students for small-plot farm automation.</p></div></div>
+      <div class="pcard reveal"><div class="rank-head"><span>Avatar Robotics</span><b>+</b></div><div class="body"><span class="chip">Accessibility</span><h3>SonicPath Glasses</h3><p>A navigation aid for the visually impaired, using ultrasonic sensing to detect obstacles ahead.</p></div></div>
+      <div class="pcard reveal"><div class="rank-head"><span>Ranger Robotics</span><b>+</b></div><div class="body"><span class="chip">Energy</span><h3>Helio Glide Bot</h3><p>A self-moving solar panel cleaning robot, keeping panels dust-free without manual labour.</p></div></div>
+      <div class="pcard reveal"><div class="rank-head"><span>GVHSS Cheruvannur</span><b>+</b></div><div class="body"><span class="chip">Healthcare</span><h3>Smart Glove for Patient Assistance</h3><p>A wearable device built to help patients signal for assistance without needing to speak.</p></div></div>
+    </div>
+    <div class="slider-nav">
+      <button class="slider-btn" id="proj-prev" aria-label="Previous project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+      <button class="slider-btn" id="proj-next" aria-label="Next project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video">
+  <div class="wrap">
+    <div class="eyebrow reveal">Watch it happen</div>
+    <h2 class="h2 reveal">Hear it from DIET Malappuram</h2>
+    <div class="video-grid reveal">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/7MLKKZ3hG2M" title="Impact of Walk2Lead in Malappuram: Dr. Babu Varghese, Principal of DIET Malappuram" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-side">
+        <blockquote>"The Walk2Lead programme has been a watershed moment for our government schools."</blockquote>
+        <cite>Dr. Babu Varghese, Principal, DIET Malappuram</cite>
+        <div class="video-more">
+          <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=Iwgu1fta5KI" target="_blank" rel="noopener">Watch the GSHSS Meppayil win →</a>
+          <a class="btn btn-ghost" href="https://www.youtube.com/@Deleadinternational/videos" target="_blank" rel="noopener">More on our YouTube channel →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="quotes" id="voices">
+  <div class="wrap">
+    <div class="eyebrow reveal">Voices</div>
+    <h2 class="h2 reveal">The foundation, the government, the schools, and the parents</h2>
+    <div class="feature-quote reveal">
+      <div class="feature-photo"><img loading="lazy" decoding="async" src="assets/people/v-noushad.png" alt="Mr. V. Noushad"></div>
+      <div class="feature-body"><span class="mark">"</span>
+        <p>The Walk2Lead Robotics TechQuest reflects our vision of empowering young minds with the skills needed for tomorrow's world. By bringing structured robotics and technology training to government school students, we are ensuring that innovation and opportunity reach those who need it most. We are proud to support a project that is shaping a generation of thinkers and leaders.</p>
+        <div class="who"><div><b>Mr. V. Noushad</b><span>Managing Director, Walkaroo Foundation</span></div></div>
+      </div>
+    </div>
+    <div class="quote-slider reveal">
+      <div class="quote-track" id="quote-track">
+        <div class="quote"><span class="mark">"</span>
+          <p>I was initially skeptical, wondering if students this young could both comprehend the theory and deliver a functional project. Instead of just answering my question to the trainers, my own students proved my doubts wrong by successfully completing their project and taking the top prize at the district expo.</p>
+          <div class="who"><div class="avatar"><img loading="lazy" decoding="async" src="assets/people/abdul-rahoof.png" alt="Mr. Abdul Rahoof"></div><div><b>Mr. Abdul Rahoof</b><span>Headmaster, GUPS Mundothuparamba</span></div></div>
+        </div>
+        <div class="quote"><span class="mark">"</span>
+          <p>The Walk2Lead programme has been a watershed moment for our government schools. The collaboration successfully integrated high-quality AI training into our system, proving we can prepare every child for the digital future when committed partners join hands.</p>
+          <div class="who"><div class="avatar"><img loading="lazy" decoding="async" src="assets/people/babu-varghese.jpeg" alt="Dr. Babu Varghese"></div><div><b>Dr. Babu Varghese</b><span>Principal, DIET Malappuram</span></div></div>
+        </div>
+        <div class="quote"><span class="mark">"</span>
+          <p>I was thrilled to help launch this initiative. The hands-on, engaging approach to robotics immediately sparked genuine curiosity and confidence among the kids. Walk2Lead lays a strong, practical foundation for innovation in our community.</p>
+          <div class="who"><div class="avatar"><img loading="lazy" decoding="async" src="assets/people/abdunnasar-uk.jpeg" alt="Dr. Abdunnasar U K"></div><div><b>Dr. Abdunnasar U K</b><span>Principal, DIET Kozhikode</span></div></div>
+        </div>
+        <div class="quote"><span class="mark">"</span>
+          <p>The training was exceptional due to its scientific planning and high standards. It gave students from ordinary government schools a rare, international-level training opportunity, filling the school with pride.</p>
+          <div class="who"><div class="avatar"><img loading="lazy" decoding="async" src="assets/people/s-bindu.png" alt="Mrs. S. Bindu"></div><div><b>Mrs. S. Bindu</b><span>Headmistress, Thavanur KM GUPS</span></div></div>
+        </div>
+        <div class="quote"><span class="mark">"</span>
+          <p>Out of 400 children, 30, including mine, were selected for robotics training. The three-month training quickly led to a noticeable, positive change in the children, boosting their interest and confidence. My children presented their project well in the district competition.</p>
+          <div class="who"><div class="avatar">P</div><div><b>A Proud Parent</b><span>Phase 2, Malappuram</span></div></div>
+        </div>
+      </div>
+      <div class="slider-nav">
+        <button class="slider-btn" id="quote-prev" aria-label="Previous testimonial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+        <button class="slider-btn" id="quote-next" aria-label="Next testimonial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DE'LEAD SPOTLIGHT -->
+<section class="spotlight" id="delead">
+  <div class="wrap">
+    <div class="eyebrow reveal">The Operator</div>
+    <h2 class="h2 reveal">De' Lead International runs this. Not just delivers it.</h2>
+    <p class="lead reveal">Walkaroo funds it. DIET endorses it. De' Lead designs the curriculum, trains the trainers, selects the students, monitors every session, and stands on stage at every expo. This page exists because we want the next CSR partner to know exactly who they'd be hiring.</p>
+    <div class="spot-grid">
+      <div class="spot-facts reveal">
+        <div class="spot-fact"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div><div><b>India &amp; UAE</b><p>Multi-domain training and education solutions company, operating experiential learning programmes across both geographies.</p></div></div>
+        <div class="spot-fact"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div><div><b>Beyond robotics</b><p>Also runs TinkerChamps Innovation Camps, teacher-development programmes, and a consulting wing building custom AI-integrated learning platforms.</p></div></div>
+        <div class="spot-fact"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg></div><div><b>Full-stack execution</b><p>Curriculum design, trainer recruitment, kit procurement, government liaison, monitoring portal, expos: one accountable team, not a chain of vendors.</p></div></div>
+        <div class="spot-fact"><div class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div><b>Chosen again, every phase</b><p>Four consecutive Walkaroo-funded phases, delivered by the same execution team.</p></div></div>
+      </div>
+      <div class="spot-people reveal">
+        <div class="person">
+          <div class="p-photo"><img loading="lazy" decoding="async" src="assets/people/sabarinath-k.png" alt="Sabarinath K"></div>
+          <div class="p-body">
+            <p>"Walk 2 Lead – Robotics Tech Quest is a powerful futuristic platform that opens a world of technology, design thinking, and innovation for children under the age of 13. The remarkable teamwork between Walkaroo, DIET, the participating schools, and De' Lead International is what makes this mission meaningful and impactful."</p>
+            <b>Sabarinath K</b><span>CMO, De' Lead International</span>
+          </div>
+        </div>
+        <div class="person">
+          <div class="p-photo"><img loading="lazy" decoding="async" src="assets/people/arjun-cp.png" alt="Arjun C P"></div>
+          <div class="p-body">
+            <p>"I have seen firsthand how Walk2Lead is reshaping young minds. The transformation across government schools in different districts has been truly remarkable. It has uplifted students, empowered staff, and positively influenced entire communities."</p>
+            <b>Arjun C P</b><span>CTO, De' Lead International</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tagline reveal">"Learn, Develop &amp; Lead."</div>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<section class="cred">
+  <div class="wrap">
+    <div class="eyebrow reveal">Independent validation</div>
+    <h2 class="h2 reveal">Inaugurated by leaders. Judged by experts.</h2>
+    <div class="cred-grid">
+      <div class="reveal">
+        <h3>Leadership support &amp; inaugurations</h3>
+        <ul class="chip-list">
+          <li><div class="who-info"><b>Muhammed Riyas</b><span>Minister for PWD &amp; Tourism</span></div></li>
+          <li><div class="who-info"><b>P. K. Kunhalikkutty</b><span>Kerala Minister for Industries &amp; Commerce, IT and AI</span></div></li>
+          <li><div class="who-info"><b>Dr. K. T. Jaleel</b><span>Former MLA, Thavanur</span></div></li>
+          <li><div class="who-info"><b>Aryadan Shoukat</b><span>MLA, Nilambur</span></div></li>
+          <li><div class="who-info"><b>U. A. Latheef</b><span>Former MLA, Manjeri</span></div></li>
+          <li><div class="who-info"><b>Thottathil Raveendran</b><span>MLA, Kozhikode</span></div></li>
+          <li><div class="who-info"><b>Linto Joseph</b><span>MLA, Thiruvambadi</span></div></li>
+          <li><div class="who-info"><b>T. P. Ramakrishna</b><span>MLA, Perambra</span></div></li>
+          <li><div class="who-info"><b>District Sub Collector</b><span>Malappuram</span></div></li>
+        </ul>
+        <p style="margin-top:14px;font-size:.84rem;color:var(--ink-soft)">Plus municipal chairs, deputy mayors and ward councillors who inaugurated individual schools across all four phases. This is a selection, not the full list.</p>
+      </div>
+      <div class="reveal">
+        <h3>Expo jury &amp; what they said</h3>
+        <ul class="chip-list jury-list">
+          <li><div class="who-info"><b>Rony K. Roy</b><span>Senior Technology Fellow, Kerala Startup Mission</span></div></li>
+          <li><div class="who-info"><b>Ram Kamal Manoj</b><span>Managing Trustee, TechTop; Advisor to Dept. of School Education, Govt. of Andhra Pradesh</span></div></li>
+          <li><div class="who-info"><b>Nisha Subramaniam</b><span>Principal, SSVM International: "The presentations and projects were on par with a college-level final project."</span></div></li>
+          <li><div class="who-info"><b>Harikrishnan M</b><span>Entrepreneur: "The students clearly understand the project, the concepts, and how to present at pitch level."</span></div></li>
+        </ul>
+        <p style="margin-top:14px;font-size:.84rem;color:var(--ink-soft)">Each district expo brought its own jury panel. This is a selection, not the full list.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="eyebrow reveal">Gallery</div>
+    <h2 class="h2 reveal">Moments from the ground</h2>
+    <div class="gallery-grid reveal">
+      <div class="wide"><img src="assets/big-group.jpg" alt="Walk2Lead cohort group photo" loading="lazy"></div>
+      <div><img src="assets/boy-mic.jpg" alt="Student presenting his project" loading="lazy"></div>
+      <div><img src="assets/girl-mic-team.jpg" alt="Student team presenting" loading="lazy"></div>
+      <div><img src="assets/expo-team1.jpg" alt="Team at the expo" loading="lazy"></div>
+      <div><img src="assets/project-table.jpg" alt="Students demonstrating a prototype" loading="lazy"></div>
+      <div><img src="assets/inauguration.jpg" alt="Programme inauguration" loading="lazy"></div>
+      <div><img src="assets/award-kids.jpg" alt="Students receiving recognition" loading="lazy"></div>
+      <div class="wide"><img src="assets/memento-group.jpg" alt="Memento distribution ceremony" loading="lazy"></div>
+      <div><img src="assets/panel.jpg" alt="Stakeholder panel at district event" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAKEHOLDERS -->
+<section class="stake" style="background:#fff;border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="eyebrow reveal">Stakeholders</div>
+    <h2 class="h2 reveal">One operator. Two partners who make it possible.</h2>
+    <div class="cards">
+      <div class="scard lead-card reveal">
+        <img loading="lazy" decoding="async" src="assets/logo-delead-dark.png" alt="De' Lead International">
+        <div class="role">Execution Partner: runs the programme</div>
+        <h3>De' Lead International</h3>
+        <p>A multi-domain training and education solutions company operating across India and the UAE, blending pedagogy, psychology and technology to run high-impact STEM programmes end-to-end: curriculum, trainers, kits, monitoring and expos.</p>
+      </div>
+      <div class="scard reveal">
+        <img loading="lazy" decoding="async" src="assets/logo-walkaroo.jpg" alt="Walkaroo Foundation">
+        <div class="role">Funding &amp; CSR</div>
+        <h3>Walkaroo Foundation</h3>
+        <p>The not-for-profit CSR arm of the Walkaroo Group, focused on education, healthcare, women's empowerment and community development. Walk2Lead is its flagship answer to the digital divide.</p>
+      </div>
+      <div class="scard reveal">
+        <div class="diet-logos"><img loading="lazy" decoding="async" src="assets/logo-diet-mlp.jpg" alt="DIET Malappuram"><img loading="lazy" decoding="async" src="assets/logo-diet-kkd.png" alt="DIET Kozhikode"><img loading="lazy" decoding="async" src="assets/logo-diet-knr.jpg" alt="DIET Kannur"></div>
+        <div class="role">Academic Partners</div>
+        <h3>DIET: Malappuram, Kozhikode &amp; Kannur</h3>
+        <p>District Institutes of Education and Training provide official endorsement, school selection and coordination, converting a private initiative into a scalable intervention inside the government school system.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="partner">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Partner With Us</div>
+      <h2>Let's plan your CSR programme together.</h2>
+      <p class="lead">De' Lead International designs and executes complete CSR programmes, from school selection and government liaison to training, expos and board-ready impact reports. Phase 5 is already being planned; there's room for a new partner to fund it.</p>
+      <div class="cta-contacts">
+        <a class="wa" href="https://wa.me/918075566081?text=Hi%20De%27%20Lead%20International%2C%20I%27d%20like%20to%20discuss%20a%20CSR%20partnership." target="_blank" rel="noopener"><span class="ic"><svg class="ico-svg" viewBox="0 0 32 32" style="width:20px;height:20px" aria-hidden="true"><path fill="#fff" d="M16.004 2.667c-7.363 0-13.333 5.97-13.333 13.333 0 2.353.615 4.56 1.69 6.475L2.667 29.333l7.045-1.848a13.27 13.27 0 0 0 6.292 1.6h.006c7.363 0 13.333-5.97 13.333-13.333S23.367 2.667 16.004 2.667Zm0 24.222a11.07 11.07 0 0 1-5.65-1.548l-.406-.24-4.184 1.098 1.117-4.078-.264-.418a11.08 11.08 0 0 1-1.703-5.905c0-6.133 4.99-11.122 11.096-11.122 2.965 0 5.752 1.155 7.847 3.253a11.03 11.03 0 0 1 3.246 7.855c0 6.133-4.99 11.105-11.099 11.105Zm6.088-8.315c-.334-.167-1.973-.973-2.279-1.084-.306-.111-.529-.167-.751.167-.223.334-.862 1.084-1.057 1.307-.195.223-.39.25-.723.084-.334-.167-1.41-.52-2.686-1.657-.993-.886-1.663-1.98-1.858-2.313-.195-.334-.02-.514.146-.68.15-.15.334-.39.501-.585.167-.195.223-.334.334-.557.111-.223.056-.418-.028-.585-.084-.167-.751-1.81-1.029-2.479-.271-.65-.546-.563-.751-.573l-.64-.011c-.223 0-.585.084-.891.418-.306.334-1.168 1.14-1.168 2.784s1.196 3.23 1.363 3.453c.167.223 2.354 3.594 5.703 5.041.797.344 1.418.55 1.902.704.799.254 1.526.218 2.101.132.641-.096 1.973-.807 2.251-1.586.278-.78.278-1.447.195-1.586-.084-.14-.306-.223-.64-.39Z"/></svg></span><span><b>Chat on WhatsApp</b></span></a>
+        <a href="mailto:info@deleadint.com"><span class="ic"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span><span><b>info@deleadint.com</b></span></a>
+        <a href="tel:+918075566081"><span class="ic"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span><span><b>+91 80755 66081</b></span></a>
+      </div>
+    </div>
+    <form id="csr-form">
+      <h3>Start the conversation</h3>
+      <p class="sub">We typically respond within one business day.</p>
+      <div class="frow">
+        <div class="field"><label>Your name</label><input name="name" required placeholder="Full name"></div>
+        <div class="field"><label>Company</label><input name="company" required placeholder="Company / Foundation"></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@company.com"></div>
+        <div class="field"><label>Phone</label><input name="phone" placeholder="+91"></div>
+      </div>
+      <div class="field"><label>What are you exploring?</label><textarea name="message" rows="4" placeholder="e.g. We want to run a STEM CSR programme in Tamil Nadu for ~500 students…"></textarea></div>
+      <button class="btn btn-primary" type="submit">Send enquiry →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img loading="lazy" decoding="async" src="assets/walk2lead-logo-white.svg" alt="Walk2Lead">
+    <div>Walk2Lead Robotics Tech Quest · A CSR project funded by Walkaroo Foundation · Executed by De' Lead International</div>
+    <div>© <span id="yr"></span> De' Lead International</div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox"><img id="lightbox-img" alt=""></div>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+// nav — scrolls away inside the hero; becomes a fixed hide/show bar past it
+const nav=document.getElementById('nav');
+const heroEl=document.querySelector('.hero');
+let lastY=scrollY;
+function updateNav(){
+  const y=scrollY;
+  const heroEnd=heroEl.offsetHeight;
+  if(y<heroEnd-80){
+    nav.classList.remove('nav-fixed');
+    nav.classList.remove('nav-hidden');
+    nav.classList.remove('scrolled');
+  }else{
+    nav.classList.add('nav-fixed');
+    nav.classList.toggle('scrolled',y>10);
+    if(y>lastY){
+      nav.classList.add('nav-hidden');
+    }else if(y<lastY){
+      nav.classList.remove('nav-hidden');
+    }
+  }
+  lastY=y;
+}
+addEventListener('scroll',updateNav,{passive:true});
+updateNav();
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// counters (integer or fixed-decimal)
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;cio.unobserve(e.target);
+  const el=e.target,end=+el.dataset.count,suf=el.dataset.suffix||'',dec=+(el.dataset.decimals||0),t0=performance.now(),dur=1400;
+  const step=t=>{const p=Math.min((t-t0)/dur,1),v=end*(1-Math.pow(1-p,3));
+    el.innerHTML=(dec?v.toFixed(dec):Math.round(v).toLocaleString('en-IN'))+(suf?'<sup>'+suf+'</sup>':'');
+    if(p<1)requestAnimationFrame(step)};
+  requestAnimationFrame(step);
+}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+// draggable scatter photos (desktop only, decorative — resets on refresh)
+document.querySelectorAll('.scatter-photo').forEach(el=>{
+  let dragging=false,offX=0,offY=0;
+  const parent=el.parentElement;
+  el.addEventListener('pointerdown',e=>{
+    dragging=true;
+    el.classList.add('dragging');
+    el.setPointerCapture(e.pointerId);
+    const r=el.getBoundingClientRect();
+    offX=e.clientX-r.left;
+    offY=e.clientY-r.top;
+    el.style.zIndex=1000;
+  });
+  el.addEventListener('pointermove',e=>{
+    if(!dragging)return;
+    const pr=parent.getBoundingClientRect();
+    let nx=e.clientX-pr.left-offX;
+    let ny=e.clientY-pr.top-offY;
+    nx=Math.max(-40,Math.min(nx,pr.width-60));
+    ny=Math.max(-20,Math.min(ny,pr.height-60));
+    el.style.left=nx+'px';
+    el.style.top=ny+'px';
+  });
+  el.addEventListener('pointerup',e=>{dragging=false;el.classList.remove('dragging');el.releasePointerCapture(e.pointerId)});
+});
+// horizontal sliders (testimonials, projects) — looped forward only, never jumps back
+function initInfiniteSlider(trackId,prevId,nextId,itemSel,autoMs){
+  const track=document.getElementById(trackId);
+  if(!track)return;
+  const baseItems=Array.from(track.children).map(ch=>{
+    const c=ch.cloneNode(true);
+    c.classList.remove('reveal');
+    return c;
+  });
+  const appendSet=()=>baseItems.forEach(ch=>track.appendChild(ch.cloneNode(true)));
+  appendSet();
+  const ensureBuffer=()=>{
+    const card=track.querySelector(itemSel);
+    if(!card)return;
+    const gap=parseFloat(getComputedStyle(track).columnGap||22);
+    const remaining=track.scrollWidth-(track.scrollLeft+track.clientWidth);
+    if(remaining<(card.offsetWidth+gap)*3)appendSet();
+  };
+  const step=dir=>{
+    const card=track.querySelector(itemSel);
+    const gap=parseFloat(getComputedStyle(track).columnGap||22);
+    track.scrollBy({left:dir*(card.offsetWidth+gap),behavior:'smooth'});
+    setTimeout(ensureBuffer,450);
+  };
+  document.getElementById(prevId)?.addEventListener('click',()=>step(-1));
+  document.getElementById(nextId)?.addEventListener('click',()=>step(1));
+  let paused=false;
+  track.addEventListener('mouseenter',()=>paused=true);
+  track.addEventListener('mouseleave',()=>paused=false);
+  track.addEventListener('touchstart',()=>paused=true,{passive:true});
+  setInterval(()=>{if(!paused)step(1)},autoMs);
+}
+initInfiniteSlider('quote-track','quote-prev','quote-next','.quote',4800);
+initInfiniteSlider('proj-track','proj-prev','proj-next','.pcard',4200);
+// lightbox
+const lb=document.getElementById('lightbox'),lbi=document.getElementById('lightbox-img');
+document.querySelectorAll('.gallery-grid img').forEach(im=>im.addEventListener('click',()=>{lbi.src=im.src;lb.classList.add('open')}));
+lb.addEventListener('click',()=>lb.classList.remove('open'));
+// form → prefilled email (swap for Formspree endpoint when available)
+document.getElementById('csr-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const d=Object.fromEntries(new FormData(e.target));
+  const body=encodeURIComponent(`Name: ${d.name}\nCompany: ${d.company}\nEmail: ${d.email}\nPhone: ${d.phone||'-'}\n\n${d.message||''}`);
+  location.href=`mailto:info@deleadint.com?subject=${encodeURIComponent('CSR Partnership Enquiry from '+d.company)}&body=${body}`;
+});
+</script>
+</body>
+</html>
