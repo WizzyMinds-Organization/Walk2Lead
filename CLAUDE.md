@@ -1,9 +1,12 @@
 # Walk2Lead Landing Page — Project Context
 
 ## What this is
-A single-page marketing/landing website for **Walk2Lead Robotics Tech Quest** — **De' Lead International's own flagship CSR initiative**, funded by **Walkaroo Foundation**. De' Lead is the creator and owner of the programme (designs the curriculum, trains the trainers, runs every phase); Walkaroo is the CSR funding partner; academic partners DIET Malappuram, DIET Kozhikode and DIET Kannur provide official endorsement and school selection.
+A single-page marketing/landing website for **Walk2Lead Robotics Tech Quest**, a CSR programme **funded by Walkaroo Foundation** and **implemented end-to-end by De' Lead International**, a prominent, experienced CSR implementation team (designs the curriculum, trains the trainers, runs every phase). Academic partners DIET Malappuram, DIET Kozhikode and DIET Kannur provide official endorsement and school selection.
 
-**⚠️ Framing rule — get this right everywhere:** De' Lead International is the subject, not a vendor. Never write "funded by Walkaroo and executed/delivered by De' Lead" (that inverts ownership and reads as De' Lead being hired). Correct pattern: "De' Lead International's [own initiative], funded by Walkaroo Foundation." This page will eventually live under De' Lead International's own website, so it should read like a page De' Lead owns, not a case study of a project they were contracted for. This was flagged directly by the client after an earlier framing pass got it backwards — treat it as a hard constraint, not a style preference.
+**⚠️ Framing rule — get this right everywhere:** the relationship is funder + implementer, not owner + vendor. Correct pattern (confirmed directly by the client): "Walk2Lead is funded by Walkaroo Foundation and implemented by De' Lead International." Two things NOT to do:
+1. Don't write it vendor-style ("...and De' Lead was hired to execute/deliver it") — De' Lead should read as a prominent, established CSR implementation specialist, not a contractor.
+2. Don't overcorrect into ownership language either ("De' Lead's own initiative", "De' Lead owns/created Walk2Lead") — an earlier pass did exactly this and the client corrected it back. De' Lead implements Walk2Lead; Walkaroo funds it. Both facts stay explicit, funder mentioned before or alongside implementer, never dropped.
+This page will eventually live under De' Lead International's own website, so De' Lead is the subject/hero throughout (their logo, their team, their track record) — but "subject of the page" ≠ "owner of the programme." Keep the two separate.
 
 **Business goal:** convert corporate/CSR decision-makers (CSR heads, HR heads, founders' offices — companies with a 2% CSR obligation under Companies Act §135) into leads for De' Lead International. The page sells *proof and de-risked execution*, not robotics. Primary CTA: "Partner with us for your CSR project" → contact form / WhatsApp / email.
 
