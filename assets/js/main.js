@@ -99,10 +99,60 @@ initInfiniteSlider('proj-track','proj-prev','proj-next','.pcard',4200);
 const lb=document.getElementById('lightbox'),lbi=document.getElementById('lightbox-img');
 document.querySelectorAll('.gallery-grid img').forEach(im=>im.addEventListener('click',()=>{lbi.src=im.src;lb.classList.add('open')}));
 lb.addEventListener('click',()=>lb.classList.remove('open'));
-// form → prefilled email (swap for Formspree endpoint when available)
+// form → Google Sheets via Apps Script
+const SHEET_URL='https://script.google.com/macros/s/AKfycbwYma3uMa_PMnFGLypPPEMW3zbgITnFjeE2Ex_eF-Y02QtoFGDGpQvxXsSyOiFd1UkP/exec';
 document.getElementById('csr-form').addEventListener('submit',e=>{
   e.preventDefault();
-  const d=Object.fromEntries(new FormData(e.target));
-  const body=encodeURIComponent(`Name: ${d.name}\nCompany: ${d.company}\nEmail: ${d.email}\nPhone: ${d.phone||'-'}\n\n${d.message||''}`);
-  location.href=`mailto:info@deleadint.com?subject=${encodeURIComponent('CSR Partnership Enquiry from '+d.company)}&body=${body}`;
+  const form=e.target;
+  const btn=form.querySelector('[type=submit]');
+  const d=Object.fromEntries(new FormData(form));
+  btn.disabled=true;
+  btn.textContent='Sending…';
+  fetch(SHEET_URL,{method:'POST',body:JSON.stringify(d)})
+    .then(r=>r.json())
+    .then(()=>{
+      btn.textContent='Sent! We\'ll be in touch.';
+      form.reset();
+    })
+    .catch(()=>{
+      // fallback to mailto if fetch fails
+      const body=encodeURIComponent(`Name: ${d.name}\nCompany: ${d.company}\nEmail: ${d.email}\nPhone: ${d.phone||'-'}\n\n${d.message||''}`);
+      location.href=`mailto:info@deleadint.com?subject=${encodeURIComponent('CSR Partnership Enquiry from '+d.company)}&body=${body}`;
+    });
 });
+
+// Hero group-photo slideshow
+(function(){
+  const wrap=document.querySelector('.b-photo-group');
+  if(!wrap) return;
+  const slides=Array.from(wrap.querySelectorAll('.hero-slide'));
+  if(slides.length<2) return;
+  const DUR=1600; // ms transition duration
+  let cur=0, paused=false;
+  // Stack all slides at position 0; first on top
+  slides.forEach((s,i)=>{s.style.zIndex=i===0?'1':'0';});
+  function go(){
+    const prev=cur;
+    cur=(cur+1)%slides.length;
+    // Place incoming slide off-screen right instantly (no transition)
+    const next=slides[cur];
+    next.style.transition='none';
+    next.style.transform='translateX(100%)';
+    next.style.zIndex='2';
+    // Force reflow so the instant reset registers before animation starts
+    next.offsetHeight;
+    // Slide in slowly
+    next.style.transition='transform '+DUR+'ms cubic-bezier(0.76,0,0.24,1)';
+    next.style.transform='translateX(0%)';
+    slides[prev].style.zIndex='1';
+    // After transition settle z-indexes
+    setTimeout(()=>{
+      slides.forEach((s,i)=>{s.style.transition='none';s.style.zIndex=i===cur?'1':'0';});
+    },DUR+50);
+  }
+  let timer=setInterval(()=>{if(!paused)go();},5000);
+  wrap.addEventListener('mouseenter',()=>paused=true);
+  wrap.addEventListener('mouseleave',()=>paused=false);
+  wrap.addEventListener('touchstart',()=>paused=true,{passive:true});
+  wrap.addEventListener('touchend',()=>paused=false,{passive:true});
+})();
