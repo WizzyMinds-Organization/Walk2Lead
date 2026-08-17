@@ -108,8 +108,7 @@ document.getElementById('csr-form').addEventListener('submit',e=>{
   const d=Object.fromEntries(new FormData(form));
   btn.disabled=true;
   btn.textContent='Sending…';
-  fetch(SHEET_URL,{method:'POST',body:JSON.stringify(d)})
-    .then(r=>r.json())
+  fetch(SHEET_URL,{method:'POST',body:JSON.stringify(d),mode:'no-cors'})
     .then(()=>{
       btn.textContent='Sent! We\'ll be in touch.';
       form.reset();
