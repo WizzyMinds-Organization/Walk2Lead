@@ -99,22 +99,19 @@ initInfiniteSlider('proj-track','proj-prev','proj-next','.pcard',4200);
 const lb=document.getElementById('lightbox'),lbi=document.getElementById('lightbox-img');
 document.querySelectorAll('.gallery-grid img').forEach(im=>im.addEventListener('click',()=>{lbi.src=im.src;lb.classList.add('open')}));
 lb.addEventListener('click',()=>lb.classList.remove('open'));
-// form → Google Sheets via Apps Script
 const SHEET_URL='https://script.google.com/macros/s/AKfycbwYma3uMa_PMnFGLypPPEMW3zbgITnFjeE2Ex_eF-Y02QtoFGDGpQvxXsSyOiFd1UkP/exec';
 document.getElementById('csr-form').addEventListener('submit',e=>{
   e.preventDefault();
   const form=e.target;
-  const btn=form.querySelector('[type=submit]');
-  const d=Object.fromEntries(new FormData(form));
-  btn.disabled=true;
-  btn.textContent='Sending…';
+  const fd=new FormData(form);
+  const d={name:fd.get('name'),company:fd.get('company'),email:fd.get('email'),phone:fd.get('phone')||'',message:fd.get('message')||''};
+  form.classList.add('is-loading');
   fetch(SHEET_URL,{method:'POST',body:JSON.stringify(d),mode:'no-cors'})
     .then(()=>{
-      btn.textContent='Sent! We\'ll be in touch.';
-      form.reset();
+      form.classList.remove('is-loading');
+      form.classList.add('is-success');
     })
     .catch(()=>{
-      // fallback to mailto if fetch fails
       const body=encodeURIComponent(`Name: ${d.name}\nCompany: ${d.company}\nEmail: ${d.email}\nPhone: ${d.phone||'-'}\n\n${d.message||''}`);
       location.href=`mailto:info@deleadint.com?subject=${encodeURIComponent('CSR Partnership Enquiry from '+d.company)}&body=${body}`;
     });
