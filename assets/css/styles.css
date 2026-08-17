@@ -369,7 +369,7 @@ nav.nav-fixed .nav-cta:hover{background:var(--red-deep) !important}
 .press-track{display:flex;align-items:flex-start;gap:24px;width:max-content;animation:press-scroll 216s linear infinite;will-change:transform;cursor:grab;user-select:none}
 .press-track:active{cursor:grabbing}
 .press-card{flex:0 0 auto;width:320px;border-radius:16px;overflow:hidden;box-shadow:0 8px 28px -8px rgba(0,0,0,.14);background:#fff;border:1px solid var(--line)}
-.press-card img{width:100%;display:block;height:auto}
+.press-card img{width:100%;display:block;height:auto;-webkit-user-drag:none;user-select:none}
 @keyframes press-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @media(max-width:600px){.press-card{width:260px}}
 @media(prefers-reduced-motion:reduce){.press-track{animation:none}}

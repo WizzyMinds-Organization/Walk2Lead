@@ -138,6 +138,9 @@ lb.addEventListener('click',()=>lb.classList.remove('open'));
     resumeFrom(getOffset());
     if(hovering)track.style.animationPlayState='paused';
   }
+  // Prevent browser native image drag from hijacking pointer events
+  track.addEventListener('dragstart',e=>e.preventDefault());
+  track.querySelectorAll('img').forEach(img=>img.setAttribute('draggable','false'));
   wrap.addEventListener('mouseenter',()=>{hovering=true;if(!dragging)track.style.animationPlayState='paused';});
   wrap.addEventListener('mouseleave',()=>{hovering=false;track.style.animationPlayState='running';});
   track.addEventListener('mousedown',onStart);
