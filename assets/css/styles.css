@@ -366,7 +366,7 @@ nav.nav-fixed .nav-cta:hover{background:var(--red-deep) !important}
 .press{padding:72px 0 80px;background:var(--cream)}
 .press .h2{margin-bottom:0}
 .press-scroll-wrap{margin-top:40px;overflow:hidden}
-.press-track{display:flex;gap:24px;width:max-content;animation:press-scroll 88s linear infinite;will-change:transform}
+.press-track{display:flex;gap:24px;width:max-content;animation:press-scroll 216s linear infinite;will-change:transform}
 .press-scroll-wrap:hover .press-track{animation-play-state:paused}
 .press-card{flex:0 0 auto;width:320px;border-radius:16px;overflow:hidden;box-shadow:0 8px 28px -8px rgba(0,0,0,.14);background:#fff;border:1px solid var(--line)}
 .press-card img{width:100%;display:block;height:auto}
